@@ -1,6 +1,6 @@
 import { IsDateString, IsString, MaxLength } from 'class-validator';
-
 export class CreateAtencionMedicaDto {
+
   @IsDateString()
   fecha: string;
 
@@ -15,4 +15,5 @@ export class CreateAtencionMedicaDto {
   @IsString()
   @MaxLength(255)
   observaciones: string;
+  
 }

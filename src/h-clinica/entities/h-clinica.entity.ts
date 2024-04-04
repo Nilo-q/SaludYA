@@ -1,10 +1,12 @@
+// La entidad es quien crear la tabla, me dice que campos y de que tipo se envian a la base de datos
+
 import { IsDateString } from 'class-validator';
 import { Usuarios } from 'src/usuarios/entities/usuarios.entity';
 import {
   Column,
   DeleteDateColumn,
   Entity,
-  JoinColumn,
+  //JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -37,13 +39,12 @@ export class HClinica {
   deletedAt: Date;
 
   // Relación Muchos a Uno con Usuarios
-  // @ManyToOne(() => Usuarios, usuarios => usuarios.facturas)
-  // usuarios: Usuarios;
-
-  // Cuando se haga de la consulta de historia clinica, se vera quien la creo, actualizo o elimino 
-  @ManyToOne(() => Usuarios)
-  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
+  @ManyToOne(() => Usuarios, usuarios => usuarios.facturas)
   usuarios: Usuarios;
 
+  // Es la relacion con usuarios 
+  // @ManyToOne(() => Usuarios)
+  // @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
+  // usuarios: Usuarios;
 
 }

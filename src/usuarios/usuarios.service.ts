@@ -5,7 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Usuarios } from './entities/usuarios.entity';
 import { Repository, FindOneOptions, FindManyOptions } from 'typeorm';
 
-
+//Este es el servicio de usuario, es quien provee o suministra al controlador
 @Injectable()
 export class UsuariosService {
   constructor(
@@ -13,26 +13,23 @@ export class UsuariosService {
     private readonly usuariosRepository: Repository<Usuarios>,
   ) {}
 
-  // Crear Usuarios 
+  //Este es el metodo que le permite al controlador crear una usuario
   async create(createUsuarioDto: CreateUsuarioDto) {
     const usuario = this.usuariosRepository.create(createUsuarioDto);
     return await this.usuariosRepository.save(usuario);
   }
 
-  // Buscar todos los usuarios 
+  //Este es el metodo que le permite al controlador buscar todos los usuarios
   async findAll( options?: FindManyOptions<Usuarios>): Promise<Usuarios[]> {
     return await this.usuariosRepository.find(options);
   }
-
-  // Buscar usuarios por Id
+ //Este es el metodo que le permite al controlador buscar un usuario por ID
   async findOne(id: number, options?: FindOneOptions<Usuarios>): Promise<Usuarios | undefined> {
     const where = { id };
     return this.usuariosRepository.findOne({ where, ...options });
   }
 
-  ////////////////////////////
-
-  //Buscar Id con contraseña 
+  //Este metodo es utilizado en el servicio del Auth en el metodo login
   findByIdWithPassword(id: number) {
     return this.usuariosRepository.findOne({
       where: {id},
@@ -40,15 +37,12 @@ export class UsuariosService {
     })
   }
 
-
-  //////////////////////////////
-
-  //Actualizar informacion 
+  //Este es el metodo que le permite al controlador actualizar un usuario por ID 
   async update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
     return await this.usuariosRepository.update(id, updateUsuarioDto);
   }
 
-  //Eliminar usuarios
+  //Este es el metodo que le permite al controlador hacer una eliminacion logica de un usuario por ID
   async remove(id: number) {
     return await this.usuariosRepository.softDelete({ id });
   }

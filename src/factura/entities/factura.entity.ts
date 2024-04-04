@@ -1,6 +1,13 @@
+// La entidad es quien crear la tabla, me dice que campos y de que tipo se envian a la base de datos 
+
 import { IsDateString } from 'class-validator';
-//import { Usuarios } from 'src/usuarios/entities/usuarios.entity';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Usuarios } from 'src/usuarios/entities/usuarios.entity';
+import { 
+  Column, 
+  Entity,
+  //JoinColumn,
+  ManyToOne, 
+  PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Factura {
@@ -14,13 +21,13 @@ export class Factura {
   @Column({ nullable: false })
   valor: number;
 
-  // @ManyToOne(() => Usuarios, (usuarios) => usuarios.id, {
-  //   eager: true,
-  // })
-  // usuarios: Usuarios;
+  //Relación Muchos a Uno con Usuarios
+  @ManyToOne(() => Usuarios, usuarios => usuarios.id,)
+  usuarios: Usuarios;
 
-  // Relación Muchos a Uno con Usuarios
-  // @ManyToOne(() => Usuarios, usuarios => usuarios.id,)
+   // Es la relacion con usuarios 
+  // @ManyToOne(() => Usuarios)
+  // @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
   // usuarios: Usuarios;
-
+  
 }

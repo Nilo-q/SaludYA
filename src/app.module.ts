@@ -9,6 +9,7 @@ import { AtencionMedicaModule } from './atencion-medica/atencion-medica.module';
 
 @Module({
   imports: [
+    // Conecxion a Base de Datos, en este caso se esta utilizando una imagen con Docker 
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

@@ -1,8 +1,10 @@
+// La entidad es quien crear la tabla, me dice que campos y de que tipo se envian a la base de datos
+
 import { IsDateString, IsEmail } from 'class-validator';
-// import { Factura } from 'src/factura/entities/factura.entity';
-// import { HClinica } from 'src/h-clinica/entities/h-clinica.entity';
-// import { Formula } from 'src/formula/entities/formula.entity';
-// import { AtencionMedica } from 'src/atencion-medica/entities/atencion-medica.entity'
+import { Factura } from 'src/factura/entities/factura.entity';
+import { HClinica } from 'src/h-clinica/entities/h-clinica.entity';
+import { Formula } from 'src/formula/entities/formula.entity';
+import { AtencionMedica } from 'src/atencion-medica/entities/atencion-medica.entity'
 import { Column, DeleteDateColumn, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Role } from '../../common/enums/role.enum';
 
@@ -41,23 +43,20 @@ export class Usuarios {
   @DeleteDateColumn()
   deletedAt: Date;
 
-  // @OneToMany(() =>Factura, (factura) => factura.usuarios)
-  // id_factura: Factura[];
-
     // Relación Uno a Muchos con Factura
-    //@OneToMany(() => Factura, (factura) => factura.usuarios)
-    //facturas: Factura[];
+    @OneToMany(() => Factura, (factura) => factura.usuarios)
+    facturas: Factura[];
   
     // Relación Uno a Muchos con HClinica
-   // @OneToMany(() => HClinica, hclinica => hclinica.usuarios)
-    //hclinicas: HClinica[];
+  @OneToMany(() => HClinica, hclinica => hclinica.usuarios)
+    hclinicas: HClinica[];
   
     // Relación Uno a Muchos con Formula
-    //@OneToMany(() => Formula, formula => formula.usuarios)
-    //formulas: Formula[];
+    @OneToMany(() => Formula, formula => formula.usuarios)
+    formulas: Formula[];
   
     // Relación Uno a Muchos con AtencionMedica
-    //@OneToMany(() => AtencionMedica, atencionMedica => atencionMedica.usuarios)
-    //atencionesMedicas: AtencionMedica[];
+    @OneToMany(() => AtencionMedica, atencionMedica => atencionMedica.usuarios)
+    atencionesMedicas: AtencionMedica[];
 
 }
