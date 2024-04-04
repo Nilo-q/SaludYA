@@ -6,6 +6,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { AuthModule } from './auth/auth.module';
 import { FacturaModule } from './factura/factura.module';
 import { AtencionMedicaModule } from './atencion-medica/atencion-medica.module';
+import { AppService } from './app.service';
+import { DownloadFileController, UploadFileController } from './app.controller';
 
 @Module({
   imports: [
@@ -27,7 +29,7 @@ import { AtencionMedicaModule } from './atencion-medica/atencion-medica.module';
     FacturaModule,
     AtencionMedicaModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [UploadFileController, DownloadFileController],
+  providers: [AppService],
 })
 export class AppModule {}

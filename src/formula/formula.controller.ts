@@ -14,7 +14,9 @@ import { UpdateFormulaDto } from './dto/update-formula.dto';
 //Este es el controlador de formula, como su nombre lo indica es quien se encarga de controlar todas las peticiones que se hagan
 @Controller('formula')
 export class FormulaController {
-  constructor(private readonly formulaService: FormulaService) {}
+  constructor(
+    private readonly formulaService: FormulaService,
+    ) {}
 
   //Este metodo permite crear formulas
   @Post()

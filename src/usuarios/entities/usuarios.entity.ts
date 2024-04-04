@@ -8,7 +8,6 @@ import { AtencionMedica } from 'src/atencion-medica/entities/atencion-medica.ent
 import { Column, DeleteDateColumn, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Role } from '../../common/enums/role.enum';
 
-
 @Entity()
 export class Usuarios {
   @PrimaryColumn({ nullable: false, unique: true })

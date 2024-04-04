@@ -67,11 +67,10 @@ export class AuthService {
       nombre: usuario.nombre,
       sub: usuario.id,
     };
-
   }
 
   //Este es el metodo que le permite al controlador  regresar la informacion del usuario, esto despues de haberse logueado 
-  async profile({ sub, /*role*/ }: { sub: number; role: Role }) {
-    return await this.usuariosService.findOne(sub);
+  async profile({ sub, role }: { sub: number; role: Role }) {
+    return await this.usuariosService.findOne(sub, {where: {role}});
   }
 }

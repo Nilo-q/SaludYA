@@ -23,6 +23,7 @@ export class UsuariosService {
   async findAll( options?: FindManyOptions<Usuarios>): Promise<Usuarios[]> {
     return await this.usuariosRepository.find(options);
   }
+
  //Este es el metodo que le permite al controlador buscar un usuario por ID
   async findOne(id: number, options?: FindOneOptions<Usuarios>): Promise<Usuarios | undefined> {
     const where = { id };
