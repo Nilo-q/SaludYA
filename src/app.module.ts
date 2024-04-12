@@ -11,14 +11,24 @@ import { DownloadFileController, UploadFileController } from './app.controller';
 
 @Module({
   imports: [
-    // Conecxion a Base de Datos, en este caso se esta utilizando una imagen con Docker 
     TypeOrmModule.forRoot({
+    /* // Conecxion a Base de Datos, en este caso se esta utilizando una imagen con Docker  y se configra mediante el archivo docker-compose.yml
       type: 'mysql',
       host: 'localhost',
       port: 3307,
       username: 'user_crud',
       password: 'root',
       database: 'db_crud',
+      autoLoadEntities: true,
+      synchronize: true, */
+
+      // Conecxion a Base de Datos,  en este caso local con XAMPP
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: '',
+      database: 'saludya',
       autoLoadEntities: true,
       synchronize: true,
     }),
